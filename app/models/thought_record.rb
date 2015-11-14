@@ -6,7 +6,7 @@ class ThoughtRecord < ActiveRecord::Base
   validates :AltResponse, presence: true
   validates :SecondEmotionStrength, presence: true
 
-  #Associations
+  # Associations
   belongs_to :ActivityLog
 
 end

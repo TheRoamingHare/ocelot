@@ -3,7 +3,7 @@ class ActivityLog < ActiveRecord::Base
   validates :CurrentMood, presence: true
 
 
-  #Associations
+  # Associations
   belongs_to :User
   has_one :ThoughtRecord
 
