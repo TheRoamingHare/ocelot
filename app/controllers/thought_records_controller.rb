@@ -1,5 +1,6 @@
 class ThoughtRecordsController < ApplicationController
   before_action :set_thought_record, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /thought_records
   # GET /thought_records.json

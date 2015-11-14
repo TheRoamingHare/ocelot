@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :users
   resources :activity_logs
   resources :thought_records
