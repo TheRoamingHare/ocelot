@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Thought Records</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Currentsituation</th>
+      <th>Emotions</th>
+      <th>Firstemotionstrength</th>
+      <th>Autothoughts</th>
+      <th>Altresponse</th>
+      <th>Secondemotionstrength</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @thought_records.each do |thought_record| %>
+      <tr>
+        <td><%= thought_record.CurrentSituation %></td>
+        <td><%= thought_record.Emotions %></td>
+        <td><%= thought_record.FirstEmotionStrength %></td>
+        <td><%= thought_record.AutoThoughts %></td>
+        <td><%= thought_record.AltResponse %></td>
+        <td><%= thought_record.SecondEmotionStrength %></td>
+        <td><%= link_to 'Show', thought_record %></td>
+        <td><%= link_to 'Edit', edit_thought_record_path(thought_record) %></td>
+        <td><%= link_to 'Destroy', thought_record, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Thought record', new_thought_record_path %>

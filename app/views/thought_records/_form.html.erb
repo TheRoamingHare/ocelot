@@ -1,0 +1,41 @@
+<%= form_for(@thought_record) do |f| %>
+  <% if @thought_record.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@thought_record.errors.count, "error") %> prohibited this thought_record from being saved:</h2>
+
+      <ul>
+      <% @thought_record.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :CurrentSituation %><br>
+    <%= f.text_area :CurrentSituation %>
+  </div>
+  <div class="field">
+    <%= f.label :Emotions %><br>
+    <%= f.text_area :Emotions %>
+  </div>
+  <div class="field">
+    <%= f.label :FirstEmotionStrength %><br>
+    <%= f.number_field :FirstEmotionStrength %>
+  </div>
+  <div class="field">
+    <%= f.label :AutoThoughts %><br>
+    <%= f.text_area :AutoThoughts %>
+  </div>
+  <div class="field">
+    <%= f.label :AltResponse %><br>
+    <%= f.text_area :AltResponse %>
+  </div>
+  <div class="field">
+    <%= f.label :SecondEmotionStrength %><br>
+    <%= f.number_field :SecondEmotionStrength %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

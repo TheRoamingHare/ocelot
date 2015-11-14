@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Currentactivity:</strong>
+  <%= @activity_log.CurrentActivity %>
+</p>
+
+<p>
+  <strong>Currentmood:</strong>
+  <%= @activity_log.CurrentMood %>
+</p>
+
+<%= link_to 'Edit', edit_activity_log_path(@activity_log) %> |
+<%= link_to 'Back', activity_logs_path %>

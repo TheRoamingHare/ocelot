@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  CurrentSituation: MyText
+  Emotions: MyText
+  FirstEmotionStrength: 1
+  AutoThoughts: MyText
+  AltResponse: MyText
+  SecondEmotionStrength: 1
+
+two:
+  CurrentSituation: MyText
+  Emotions: MyText
+  FirstEmotionStrength: 1
+  AutoThoughts: MyText
+  AltResponse: MyText
+  SecondEmotionStrength: 1

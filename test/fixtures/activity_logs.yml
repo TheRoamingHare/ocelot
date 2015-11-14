@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  CurrentActivity: MyText
+  CurrentMood: 1
+
+two:
+  CurrentActivity: MyText
+  CurrentMood: 1
