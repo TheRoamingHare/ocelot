@@ -4,6 +4,11 @@ Rails.application.routes.draw do
 
   resources :activity_logs do
     resources :thought_records
+
+    collection do
+      # Route for mass-updating activities
+      post 'update_many'
+    end
   end
 
   # Route to see *all* thought records

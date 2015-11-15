@@ -8,6 +8,41 @@ class ActivityLogsController < ApplicationController
     @activity_logs = ActivityLog.where(User: current_user)
   end
 
+  # POST /activity_logs
+  def update_many
+    # loop over params
+    errors = []
+    for i in current_user.NormalWake..(current_user.NormalSleep + 12)
+      if (!params["current_activity-" + i.to_s].blank? && !params["current_mood-" + i.to_s].blank?)
+
+        # Update an existing record if there
+        if (ActivityLog.where(LogWindow: i).exists?)
+          log = ActivityLog.where(LogWindow: i).first
+          log.CurrentActivity = params["current_activity-" + i.to_s]
+          log.CurrentMood = params["current_mood-" + i.to_s]
+        else
+          # TODO: Variable date
+          log = ActivityLog.new(CurrentActivity: params["current_activity-" + i.to_s],
+                  CurrentMood: params["current_mood-" + i.to_s],
+                  LogWindow: i,
+                  LogDate: Date.current().to_s(:iso8601))
+        end
+
+        # Attempt to save the log
+        if !log.save
+          errors << "Could not update record for #{i}:00, please try again"
+        end
+
+      # Is one there but not the other? Let the user know
+      elsif (!!params["current_activity-" + i.to_s].blank? ^ !!params["current_mood-" + i.to_s].blank?)
+          errors << "Missing some data for #{i}:00, please try again."
+      end
+    end
+
+    # TODO: Display the errors array
+    redirect_to activity_logs_url, notice: 'Logs were updated.'
+  end
+
   # GET /activity_logs/1
   # GET /activity_logs/1.json
   def show
@@ -77,6 +112,9 @@ class ActivityLogsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def activity_log_params
-      params.require(:activity_log).permit(:CurrentActivity, :CurrentMood)
+      if (params[:activity_log])
+        params.require(:activity_log).permit(:CurrentActivity, :CurrentMood)
+      end
+      # TODO: Strong params on many update case
     end
 end

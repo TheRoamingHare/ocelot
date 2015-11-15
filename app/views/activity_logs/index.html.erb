@@ -4,6 +4,7 @@
   <h1><%= current_user.Name %>'s Activity Logs</h1>
 <% end %>
 
+<%= form_tag(update_many_activity_logs_path, method: "post") do |f| %>
 <% if false %>
 <%  %>
  <table class='show-for-large-up'>
@@ -70,12 +71,14 @@
               <% window = "#{j}:00 - #{j+1}:00" %>
               <%= window %>
             </td>
-            <td><%= text_area_tag(:current_activity) %></td>
-            <td><%= number_field_tag(:current_mood) %></td>
+            <td><%= text_area_tag(("current_activity-" + i.to_s).to_sym) %></td>
+            <td><%= number_field_tag(("current_mood-" + i.to_s).to_sym) %></td>
           </tr>
         <% end %>
     </tbody>
   </table>
+  <%= submit_tag("Save") %>
+<% end %>
 <br>
 
 <%= link_to 'New Activity log', new_activity_log_path %>
