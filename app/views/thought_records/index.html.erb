@@ -2,12 +2,6 @@
 
 <div class="row">
   <div class="large-12 columns">
-    <%= link_to 'New Thought record', new_activity_log_thought_record_path(@log) %>
-  </div>
-</div>
-
-<div class="row">
-  <div class="large-12 columns">
     <% if user_signed_in? %>
       <h1><%= current_user.Name %>'s Thought Records</h1>
     <% end %>

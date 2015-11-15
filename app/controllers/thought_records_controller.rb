@@ -99,6 +99,6 @@ class ThoughtRecordsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def thought_record_params
-      params.require(:thought_record).permit(:CurrentSituation, :Emotions, :FirstEmotionStrength, :AutoThoughts, :AltResponse, :SecondEmotionStrength)
+      params.require(:thought_record).permit(:CurrentSituation, :Emotions, :Outcome, :AutoThoughts, :AltResponse)
     end
 end
