@@ -5,7 +5,7 @@ class ActivityLogsController < ApplicationController
   # GET /activity_logs
   # GET /activity_logs.json
   def index
-    @activity_logs = ActivityLog.where(User: current_user)
+    @activity_logs = ActivityLog.where(User: current_user).order(:LogWindow)
   end
 
   # POST /activity_logs
