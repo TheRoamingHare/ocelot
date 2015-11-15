@@ -72,8 +72,8 @@
               <% window = "#{j}:00 - #{j+1}:00" %>
               <%= window %>
             </td>
-            <td><%= text_area_tag(("current_activity-" + i.to_s).to_sym) %></td>
-            <td><%= number_field_tag(("current_mood-" + i.to_s).to_sym) %></td>
+            <td><%= text_area_tag(("current_activity-" + j.to_s).to_sym) %></td>
+            <td><%= number_field_tag(("current_mood-" + j.to_s).to_sym) %></td>
           </tr>
         <% end %>
     </tbody>
