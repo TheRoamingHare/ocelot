@@ -18,9 +18,9 @@ ActiveRecord::Schema.define(version: 20151115153758) do
     t.integer  "CurrentMood"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.integer  "User_id"
     t.string   "LogDate"
     t.integer  "LogWindow"
+    t.integer  "User_id"
   end
 
   add_index "activity_logs", ["LogDate"], name: "index_activity_logs_on_LogDate"
