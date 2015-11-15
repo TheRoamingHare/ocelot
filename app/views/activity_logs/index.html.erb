@@ -22,6 +22,14 @@
             <td><input type='number_field' /></td>
           </tr>
         <% end %>
+        <%@activity_logs.each do |log|%>
+        <tr>
+          <td>1</td>
+          <td><<%= log.CurrentActivity %></td>
+          <td><<%= log.CurrentMood %></td>
+          <td><%= link_to 'Show', activity_log_path(log) %></td>
+        </tr>
+        <%end%>
     </tbody>
   </table>
 <br>
