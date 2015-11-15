@@ -1,22 +1,39 @@
 
 
-<aside class="left-off-canvas-menu">
+<aside class="left-off-canvas-menu hide-for-large-up">
   <ul class="off-canvas-list">
     <li><label>Ocelot</label></li>
     <li> <%= link_to 'Activity Log', activity_logs_path %></li>
+    <li> <%= link_to 'Thought Records', thought_records_path %></li>
     <li><a href="#">...</a></li>
   </ul>
 </aside>
 
 
-
-
-<nav class="tab-bar">
+<nav class="tab-bar hide-for-medium-up">
   <section class="left-small">
     <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
   </section>
 
   <section class="middle tab-bar-section">
     <h1 class="title">Ocelot</h1>
+  </section>
+</nav>
+
+<nav class="top-bar hide-for-small-only">
+  <ul class="title-area">
+    <li class="name">
+      <h1><a href="#">My Site</a></h1>
+    </li>
+     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+  </ul>
+
+  <section class="top-bar-section">
+    <!-- Left Nav Section -->
+    <ul class="left">
+      <li> <%= link_to 'Activity Log', activity_logs_path %></li>
+      <li> <%= link_to 'Thought Records', thought_records_path %></li>
+    </ul>
   </section>
 </nav>
