@@ -18,6 +18,7 @@ class ThoughtRecordsController < ApplicationController
     else
       protect_log_created_by(params[:activity_log_id])
       @thought_records = ThoughtRecord.where(ActivityLog: params[:activity_log_id])
+      @log = params[:activity_log_id]
     end
   end
 
