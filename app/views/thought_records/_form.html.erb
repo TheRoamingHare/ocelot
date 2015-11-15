@@ -11,29 +11,61 @@
     </div>
   <% end %>
 
+  <div class="row">
+    <div class="large-6 columns">
+      <strong>Current Situation</strong><br>
+      <%= f.text_area :CurrentSituation,
+      :placeholder => "Where were you and what was going on when you got upset...?"%>
+    </div>
+  </div>
+
   <div class="field">
-    <%= f.label :CurrentSituation %><br>
-    <%= f.text_area :CurrentSituation %>
+    <strong>Emotions</strong><br>
+    <%= f.text_area :Emotions,
+    :placeholder => "What emotions (sad, anxious, angry, etc) did you feel at the time? Rate the intensity of each (0-100%)"%>
   </div>
   <div class="field">
-    <%= f.label :Emotions %><br>
-    <%= f.text_area :Emotions %>
+    <strong>Automatic Thoughts</strong><br>
+    <%= f.text_area :AutoThoughts,
+    :placeholder => "What thoughts and/or images went through your mind? Rate your belief in each (0-100%)" %>
+  </div>
+
+  <div class="row">
+    <div class ="large-6 columns">
+      1. What is the evidence that automatic thought is true? What is the evidence that it is not true?
+    </div>
+  </div>
+  <div class="row">
+    <div class ="large-6 columns">
+      2. Are there alternative explanations for tathat event or alternative ways to view the situation?
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-6 columns">
+      3. What are the implications if the thought is true? What's the most upsetting thing about it? What's the most realistic view? What can I do about it?
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-6 columns">
+      4. What would I tell a good friend in the same situation?
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-6 columns">
+      <u>Possible Distortions:</u> All-or-nothing Thinking; Overgeneralizing; Discounting the Postives; Jumping to conclusions; Mind-reading;
+      Fortune-telling; Magnifying/Minimizing; Emotional Reasoning; Making "Should" Statements; Labeling; Inappropriate Blaming.
+    </div>
+  </div>
+
+  <div class="field">
+    <strong>Alternative Responses</strong><br>
+    <%= f.text_area :AltResponse,
+    :placeholder => "Use the questions below to compose responses to the automatic thoughts. Rate your belief in each (0-100%). Also, consult the list of possible distortions" %>
   </div>
   <div class="field">
-    <%= f.label :FirstEmotionStrength %><br>
-    <%= f.number_field :FirstEmotionStrength %>
-  </div>
-  <div class="field">
-    <%= f.label :AutoThoughts %><br>
-    <%= f.text_area :AutoThoughts %>
-  </div>
-  <div class="field">
-    <%= f.label :AltResponse %><br>
-    <%= f.text_area :AltResponse %>
-  </div>
-  <div class="field">
-    <%= f.label :SecondEmotionStrength %><br>
-    <%= f.number_field :SecondEmotionStrength %>
+    <strong>Outcome</strong><br>
+    <%= f.text_area :Outcome,
+    :placeholder => "Rerate your belief in your automatic thoughts (0-100%) and in the intensity of your emotions (0-100%)" %>
   </div>
   <div class="actions">
     <%= f.submit %>
