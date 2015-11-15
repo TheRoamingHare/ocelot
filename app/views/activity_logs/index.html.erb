@@ -5,7 +5,7 @@
 <% end %>
 
 <%= form_tag(update_many_activity_logs_path, method: "post") do |f| %>
-<% if false %>
+<% if ActivityLog.where(:LogDate => 2.days.ago.strftime("%Y-%m-%d")).exists? %>
 <%  %>
  <table class='show-for-large-up'>
    <caption>2 days ago</caption>
@@ -20,7 +20,7 @@
  </table>
  <% end %>
 
- <% if false %>
+ <% if ActivityLog.where(:LogDate => 1.days.ago.strftime("%Y-%m-%d")).exists? %>
  <%  %>
   <table class='show-for-medium-up'>
     <caption>Yesterday</caption>
@@ -48,17 +48,18 @@
 
     <tbody>
       <% i = 0 %>
-      <% @activity_logs.each do |a_log| %>
+      <% @activity_logs.where(:LogDate => Date.today.to_s).each do |a_log| %>
         <% i +=1 %>
         <tr>
           <td><%= a_log.LogWindow%><</td>
           <td><%= a_log.CurrentActivity %></td>
           <td><%= a_log.CurrentMood %></td>
           <td>
-            <% #unless @thought_record.find(:activity_log_id => a_log.id).blank? %>
-
-            <% #else %>
-            <% #end %>
+            <% if ThoughtRecord.where(:ActivityLog => a_log).exists? %>
+                <%= link_to 'Show', activity_log_thought_record_path(a_log, ThoughtRecord.where(:ActivityLog => a_log).first) %>
+            <% else %>
+                <%= link_to 'New', new_activity_log_thought_record_path(a_log) %>
+            <% end %>
           </td>
         </tr>
 
