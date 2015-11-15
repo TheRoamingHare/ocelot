@@ -45,7 +45,7 @@
 
 <br>
 <div class="row">
-  <div class="large-8 columns">
+  <div class="large-12 columns">
       <h4>Here is some basic info on your account</h4>
   </div>
 </div>
@@ -55,23 +55,40 @@
 
 <div class="row">
   <h5>
-  <div class="small-1 columns ">Email:</div>
-  <div class="small-11 columns"><%= user.email %></div>
+  <div class="small-3 columns ">Email</div>
+  <div class="small-9 columns">:      <%= user.email %></div>
   </h5>
 </div>
 
 <div class="row">
     <h5>
-  <div class="small-1 columns">Age:</div>
-  <div class="small-11 columns"><%= user.Age %></div>
+  <div class="small-3 columns">Age</div>
+  <div class="small-9 columns">:      <%=user.Age %></div>
 </h5>
 </div>
 
 
 <div class="row">
     <h5>
-  <div class="small-1 columns">Zip:</div>
-  <div class="small-11 columns"><%= user.Zip %></div>
+  <div class="small-3 columns">Zip</div>
+  <div class="small-9 columns">:      <%= user.Zip %></div>
+    </h5>
+</div>
+
+
+<div class="row">
+    <h5>
+  <div class="small-3 columns">Usual time you wake up</div>
+  <div class="small-9 columns">:      <%=user.NormalWake %></div>
+    </h5>
+</div>
+
+
+
+<div class="row">
+    <h5>
+  <div class="small-3 columns">Usual time you sleep</div>
+  <div class="small-9 columns">:      <%=  user.NormalSleep %></div>
     </h5>
 </div>
 <br>

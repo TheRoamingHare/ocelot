@@ -15,11 +15,33 @@
  *= require foundation_and_overrides
 
  */
-
+/*
 body {
   background-color: #fff;
   background-image: url("https://41.media.tumblr.com/f6c67ec2821a91051e4175f8a102e1e2/tumblr_n6rzpcsMk41st5lhmo1_1280.jpg");
   background-repeat: no-repeat;
   background-size: 100%;
 
+}
+*/
+
+#cool {
+    background-image: url("https://41.media.tumblr.com/f6c67ec2821a91051e4175f8a102e1e2/tumblr_n6rzpcsMk41st5lhmo1_1280.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    width: 100% !important;
+    z-index: 0;
+    -webkit-filter: blur(2px);
+    -moz-filter: blur(2px);
+    -o-filter: blur(2px);
+    -ms-filter: blur(2px);
+}
+.main-section{
+  -webkit-filter: blur(0px) !important;
+  -moz-filter: blur(0px) !important;
+  -o-filter: blur(0px) !important;
+  -ms-filter: blur(0px) !important;
 }
