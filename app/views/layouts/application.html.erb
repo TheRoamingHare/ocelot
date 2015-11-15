@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Ocelot</title>
-    <%= render "layouts/header_nav" %>
+
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
@@ -15,11 +15,23 @@
   </head>
 
   <body>
+    <div class="off-canvas-wrap" data-offcanvas>
+  <div class="inner-wrap">
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
 
-    <%= yield %>
+    <%= render "layouts/header_nav" %>
+
+
+
+    <section class="main-section">
+        <%= yield %>
+    </section>
+
+  <a class="exit-off-canvas"></a>
+
+  </div>
+</div>
+
 
   </body>
 </html>
