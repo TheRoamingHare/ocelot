@@ -10,6 +10,8 @@
       <th>Zip</th>
       <th>Age</th>
       <th>Email</th>
+      <th>Time you normally wake up</th>
+      <th>Time you normally go to sleep</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -21,6 +23,8 @@
         <td><%= user.Zip %></td>
         <td><%= user.Age %></td>
         <td><%= user.email %></td>
+        <td><%= user.NormalWake %></td>
+        <td><%= user.NormalSleep %></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>

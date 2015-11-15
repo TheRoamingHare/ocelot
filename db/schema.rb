@@ -11,16 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151115012018) do
+ActiveRecord::Schema.define(version: 20151115031212) do
 
   create_table "activity_logs", force: :cascade do |t|
     t.text     "CurrentActivity"
     t.integer  "CurrentMood"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "LogDate"
+    t.integer  "LogWindow"
     t.integer  "User_id"
   end
 
+  add_index "activity_logs", ["LogDate"], name: "index_activity_logs_on_LogDate"
   add_index "activity_logs", ["User_id"], name: "index_activity_logs_on_User_id"
 
   create_table "thought_records", force: :cascade do |t|
@@ -49,6 +52,8 @@ ActiveRecord::Schema.define(version: 20151115012018) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.integer  "NormalWake"
+    t.integer  "NormalSleep"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
