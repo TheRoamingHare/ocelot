@@ -51,7 +51,7 @@
       <% @activity_logs.where(:LogDate => Date.today.to_s).each do |a_log| %>
         <% i +=1 %>
         <tr>
-          <td><%= a_log.LogWindow%><</td>
+          <td><%= windowify(a_log.LogWindow) %></td>
           <td><%= a_log.CurrentActivity %></td>
           <td><%= a_log.CurrentMood %></td>
           <td>
