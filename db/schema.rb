@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151114203513) do
+ActiveRecord::Schema.define(version: 20151115012018) do
 
   create_table "activity_logs", force: :cascade do |t|
     t.text     "CurrentActivity"
@@ -23,12 +23,11 @@ ActiveRecord::Schema.define(version: 20151114203513) do
   create_table "thought_records", force: :cascade do |t|
     t.text     "CurrentSituation"
     t.text     "Emotions"
-    t.integer  "FirstEmotionStrength"
     t.text     "AutoThoughts"
     t.text     "AltResponse"
-    t.integer  "SecondEmotionStrength"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.text     "Outcome"
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Currentsituation:</strong>
+  <strong>Current Situation:</strong>
   <%= @thought_record.CurrentSituation %>
 </p>
 
@@ -30,5 +30,6 @@
   <%= @thought_record.SecondEmotionStrength %>
 </p>
 
-<%= link_to 'Edit', edit_thought_record_path(@thought_record) %> |
+<%= link_to 'Edit', edit_thought_record_path(@thought_record) %>
+<%= link_to 'Delete', @thought_record, method: :delete, data: { confirm: 'Are you sure?' } %>
 <%= link_to 'Back', thought_records_path %>
