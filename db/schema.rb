@@ -11,14 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151114203513) do
+ActiveRecord::Schema.define(version: 20151114225030) do
 
   create_table "activity_logs", force: :cascade do |t|
     t.text     "CurrentActivity"
     t.integer  "CurrentMood"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "User_id"
   end
+
+  add_index "activity_logs", ["User_id"], name: "index_activity_logs_on_User_id"
 
   create_table "thought_records", force: :cascade do |t|
     t.text     "CurrentSituation"
