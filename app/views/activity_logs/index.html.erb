@@ -51,7 +51,7 @@
       <% @activity_logs.where(:LogDate => Date.today.to_s).each do |a_log| %>
         <% i +=1 %>
         <tr>
-          <td><%= a_log.LogWindow%><</td>
+          <td><%= windowify(a_log.LogWindow) %></td>
           <td><%= a_log.CurrentActivity %></td>
           <td><%= a_log.CurrentMood %></td>
           <td>
@@ -68,12 +68,10 @@
       <% for j in (current_user.NormalWake + i)..(current_user.NormalSleep + 11) %>
           <tr>
             <td>
-              <% j = j - 12 if j > 12 %>
-              <% window = "#{j}:00 - #{j+1}:00" %>
-              <%= window %>
+              <%= windowify(j) %>
             </td>
-            <td><%= text_area_tag(("current_activity-" + i.to_s).to_sym) %></td>
-            <td><%= number_field_tag(("current_mood-" + i.to_s).to_sym) %></td>
+            <td><%= text_area_tag(("current_activity-" + j.to_s).to_sym) %></td>
+            <td><%= number_field_tag(("current_mood-" + j.to_s).to_sym) %></td>
           </tr>
         <% end %>
     </tbody>

@@ -5,7 +5,7 @@ class ActivityLogsController < ApplicationController
   # GET /activity_logs
   # GET /activity_logs.json
   def index
-    @activity_logs = ActivityLog.where(User: current_user)
+    @activity_logs = ActivityLog.where(User: current_user).order(:LogWindow)
   end
 
   # POST /activity_logs
@@ -16,16 +16,19 @@ class ActivityLogsController < ApplicationController
       if (!params["current_activity-" + i.to_s].blank? && !params["current_mood-" + i.to_s].blank?)
 
         # Update an existing record if there
-        if (ActivityLog.where(LogWindow: i).exists?)
-          log = ActivityLog.where(LogWindow: i).first
+        if (ActivityLog.where(User: current_user, LogWindow: i).exists?)
+          puts "exists"
+          log = ActivityLog.where(User: current_user, LogWindow: i).first
           log.CurrentActivity = params["current_activity-" + i.to_s]
           log.CurrentMood = params["current_mood-" + i.to_s]
         else
+          puts "new"
           # TODO: Variable date
           log = ActivityLog.new(CurrentActivity: params["current_activity-" + i.to_s],
                   CurrentMood: params["current_mood-" + i.to_s],
                   LogWindow: i,
-                  LogDate: Date.current().to_s(:iso8601))
+                  LogDate: Date.current().to_s(:iso8601),
+                  User: current_user)
         end
 
         # Attempt to save the log
