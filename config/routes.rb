@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :users
-  resources :activity_logs
-  resources :thought_records
+
+  resources :activity_logs do
+    resources :thought_records
+  end
+
+  # Route to see *all* thought records
+  get 'thought_records' => 'thought_records#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -6,8 +6,9 @@ class ThoughtRecord < ActiveRecord::Base
   validates :AutoThoughts, presence: true
   validates :AltResponse, presence: true
   validates :SecondEmotionStrength, presence: true
+  validates :ActivityLog, presence: true
 
   # Associations
-  belongs_to :ActivityLog
+  belongs_to :ActivityLog, foreign_key: "activity_log_id"
 
 end

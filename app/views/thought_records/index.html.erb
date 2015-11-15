@@ -21,10 +21,14 @@
       <tr>
         <td><<%= thought_record.updated_at %></td>
         <td><%= thought_record.CurrentSituation %></td>
-        <td><%= link_to 'Show', thought_record %></td>
+        <td><%= link_to 'Show', activity_log_thought_record_path(thought_record.ActivityLog, thought_record) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+
+<% if params[:activity_log_id] && @thought_records.length > 0 %>
+  <%= link_to 'New Thought record', new_activity_log_thought_record_path(@thought_records[0].ActivityLog) %>
+<% end %>

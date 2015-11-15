@@ -11,7 +11,7 @@ class ActivityLogsController < ApplicationController
   # GET /activity_logs/1
   # GET /activity_logs/1.json
   def show
-    protect_created_by(params[:id])
+    protect_log_created_by(params[:id])
   end
 
   # GET /activity_logs/new
@@ -21,7 +21,7 @@ class ActivityLogsController < ApplicationController
 
   # GET /activity_logs/1/edit
   def edit
-    protect_created_by(params[:id])
+    protect_log_created_by(params[:id])
   end
 
   # POST /activity_logs
@@ -44,7 +44,7 @@ class ActivityLogsController < ApplicationController
   # PATCH/PUT /activity_logs/1
   # PATCH/PUT /activity_logs/1.json
   def update
-    protect_created_by(params[:id])
+    protect_log_created_by(params[:id])
 
     respond_to do |format|
       if @activity_log.update(activity_log_params)
@@ -60,7 +60,7 @@ class ActivityLogsController < ApplicationController
   # DELETE /activity_logs/1
   # DELETE /activity_logs/1.json
   def destroy
-    protect_created_by(params[:id])
+    protect_log_created_by(params[:id])
 
     @activity_log.destroy
     respond_to do |format|
@@ -79,18 +79,4 @@ class ActivityLogsController < ApplicationController
     def activity_log_params
       params.require(:activity_log).permit(:CurrentActivity, :CurrentMood)
     end
-
-    # Make sure only the proper user can affect the model
-    def protect_created_by(id)
-      log = ActivityLog.find(id)
-
-      if log.User != current_user
-        # TODO: Make this render a helpful error message
-        render(status: :forbidden, text: "Access denied.")
-        return false
-      end
-
-      return true
-    end
-
 end

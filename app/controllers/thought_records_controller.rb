@@ -4,32 +4,52 @@ class ThoughtRecordsController < ApplicationController
 
   # GET /thought_records
   # GET /thought_records.json
+  # GET /activity_logs/:activity_log_id/thought_records
+  # GET /activity_logs/:activity_log_id/thought_records.json
   def index
-    @thought_records = ThoughtRecord.all
+    # Render all if not viewed in the context of a activity log.
+    if !params[:activity_log_id]
+      @thought_records = []
+      ActivityLog.where(User: current_user).each do |log|
+        @thought_records << log.ThoughtRecord if log.ThoughtRecord
+      end
+
+    # Otherwise, render just associated with activity log
+    else
+      protect_log_created_by(params[:activity_log_id])
+      @thought_records = ThoughtRecord.where(ActivityLog: params[:activity_log_id])
+    end
   end
 
-  # GET /thought_records/1
-  # GET /thought_records/1.json
+  # GET /activity_logs/:activity_log_id/thought_records/1
+  # GET /activity_logs/:activity_log_id/thought_records/1.json
   def show
+    protect_log_created_by(params[:activity_log_id])
+    protect_thought_created_by(params[:id])
   end
 
-  # GET /thought_records/new
+  # GET /activity_logs/:activity_log_id/thought_records/new
   def new
     @thought_record = ThoughtRecord.new
+    @thought_record.ActivityLog = ActivityLog.find(params[:activity_log_id])
   end
 
-  # GET /thought_records/1/edit
+  # GET /activity_logs/:activity_log_id/thought_records/1/edit
   def edit
+    protect_log_created_by(params[:activity_log_id])
+    protect_thought_created_by(params[:id])
   end
 
-  # POST /thought_records
-  # POST /thought_records.json
+  # POST /activity_logs/:activity_log_id/thought_records
+  # POST /activity_logs/:activity_log_id/thought_records.json
   def create
     @thought_record = ThoughtRecord.new(thought_record_params)
+    @thought_record.ActivityLog = ActivityLog.find(params[:activity_log_id])
+    # TODO: Make sure create only as part of activity log
 
     respond_to do |format|
       if @thought_record.save
-        format.html { redirect_to @thought_record, notice: 'Thought record was successfully created.' }
+        format.html { redirect_to [@thought_record.ActivityLog, @thought_record], notice: 'Thought record was successfully created.' }
         format.json { render :show, status: :created, location: @thought_record }
       else
         format.html { render :new }
@@ -38,12 +58,15 @@ class ThoughtRecordsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /thought_records/1
-  # PATCH/PUT /thought_records/1.json
+  # PATCH/PUT /activity_logs/:activity_log_id/thought_records/1
+  # PATCH/PUT /activity_logs/:activity_log_id/thought_records/1.json
   def update
+    protect_log_created_by(params[:activity_log_id])
+    protect_thought_created_by(params[:id])
+
     respond_to do |format|
       if @thought_record.update(thought_record_params)
-        format.html { redirect_to @thought_record, notice: 'Thought record was successfully updated.' }
+        format.html { redirect_to [@thought_record.ActivityLog, @thought_record], notice: 'Thought record was successfully updated.' }
         format.json { render :show, status: :ok, location: @thought_record }
       else
         format.html { render :edit }
@@ -52,12 +75,17 @@ class ThoughtRecordsController < ApplicationController
     end
   end
 
-  # DELETE /thought_records/1
-  # DELETE /thought_records/1.json
+  # DELETE /activity_logs/:activity_log_id/thought_records/1
+  # DELETE /activity_logs/:activity_log_id/thought_records/1.json
   def destroy
+    protect_log_created_by(params[:activity_log_id])
+    protect_thought_created_by(params[:id])
+
+    log = @thought_record.ActivityLog
+
     @thought_record.destroy
     respond_to do |format|
-      format.html { redirect_to thought_records_url, notice: 'Thought record was successfully destroyed.' }
+      format.html { redirect_to activity_log_thought_records_url(log), notice: 'Thought record was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
