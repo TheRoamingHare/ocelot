@@ -20,19 +20,20 @@ ActiveRecord::Schema.define(version: 20151115031212) do
     t.datetime "updated_at",      null: false
     t.string   "LogDate"
     t.integer  "LogWindow"
+    t.integer  "User_id"
   end
 
   add_index "activity_logs", ["LogDate"], name: "index_activity_logs_on_LogDate"
+  add_index "activity_logs", ["User_id"], name: "index_activity_logs_on_User_id"
 
   create_table "thought_records", force: :cascade do |t|
     t.text     "CurrentSituation"
     t.text     "Emotions"
-    t.integer  "FirstEmotionStrength"
     t.text     "AutoThoughts"
     t.text     "AltResponse"
-    t.integer  "SecondEmotionStrength"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.text     "Outcome"
   end
 
   create_table "users", force: :cascade do |t|

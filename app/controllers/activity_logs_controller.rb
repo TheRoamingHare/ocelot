@@ -5,12 +5,13 @@ class ActivityLogsController < ApplicationController
   # GET /activity_logs
   # GET /activity_logs.json
   def index
-    @activity_logs = ActivityLog.all
+    @activity_logs = ActivityLog.where(User: current_user)
   end
 
   # GET /activity_logs/1
   # GET /activity_logs/1.json
   def show
+    protect_created_by(params[:id])
   end
 
   # GET /activity_logs/new
@@ -20,12 +21,14 @@ class ActivityLogsController < ApplicationController
 
   # GET /activity_logs/1/edit
   def edit
+    protect_created_by(params[:id])
   end
 
   # POST /activity_logs
   # POST /activity_logs.json
   def create
     @activity_log = ActivityLog.new(activity_log_params)
+    @activity_log.User = current_user
 
     respond_to do |format|
       if @activity_log.save
@@ -41,6 +44,8 @@ class ActivityLogsController < ApplicationController
   # PATCH/PUT /activity_logs/1
   # PATCH/PUT /activity_logs/1.json
   def update
+    protect_created_by(params[:id])
+
     respond_to do |format|
       if @activity_log.update(activity_log_params)
         format.html { redirect_to @activity_log, notice: 'Activity log was successfully updated.' }
@@ -55,6 +60,8 @@ class ActivityLogsController < ApplicationController
   # DELETE /activity_logs/1
   # DELETE /activity_logs/1.json
   def destroy
+    protect_created_by(params[:id])
+
     @activity_log.destroy
     respond_to do |format|
       format.html { redirect_to activity_logs_url, notice: 'Activity log was successfully destroyed.' }
@@ -72,4 +79,18 @@ class ActivityLogsController < ApplicationController
     def activity_log_params
       params.require(:activity_log).permit(:CurrentActivity, :CurrentMood)
     end
+
+    # Make sure only the proper user can affect the model
+    def protect_created_by(id)
+      log = ActivityLog.find(id)
+
+      if log.User != current_user
+        # TODO: Make this render a helpful error message
+        render(status: :forbidden, text: "Access denied.")
+        return false
+      end
+
+      return true
+    end
+
 end
