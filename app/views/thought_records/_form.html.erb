@@ -1,4 +1,4 @@
-<%= form_for(@thought_record) do |f| %>
+<%= form_for(@thought_record, url: url) do |f| %>
   <% if @thought_record.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@thought_record.errors.count, "error") %> prohibited this thought_record from being saved:</h2>
