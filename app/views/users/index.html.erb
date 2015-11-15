@@ -1,7 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Users</h1>
 
+
+<!--
 <table>
   <thead>
     <tr>
@@ -27,7 +28,58 @@
     <% end %>
   </tbody>
 </table>
+!-->
+  <% @users.each do |user| %>
+<div class="row">
+
+  <div class="text-center">
+      <h1>Hi <%= user.Name %></h1>
+  </div>
+
+
+</div>
 
 <br>
+<div class="row">
+  <div class="large-8 columns">
+      <h4>Here is some basic info on your account</h4>
+  </div>
+</div>
+<br>
+<br>
+<br>
 
-<%= link_to 'New User', new_user_path %>
+<div class="row">
+  <h5>
+  <div class="large-1 columns">Email:</div>
+  <div class="large-11 columns"><%= user.email %></div>
+  </h5>
+</div>
+
+<div class="row">
+    <h5>
+  <div class="large-1 columns">Age:</div>
+  <div class="large-11 columns"><%= user.Age %></div>
+</h5>
+</div>
+
+
+<div class="row">
+    <h5>
+  <div class="large-1 columns">Zip:</div>
+  <div class="large-11 columns"><%= user.Zip %></div>
+    </h5>
+</div>
+<br>
+<br>
+<br>
+<div class="row">
+<%= button_to "Edit Account Information", edit_user_path(user), :class => "button", :method => :get  %>
+</div>
+
+<div class="row">
+<%= button_to "Delete Account", user, :class => "button alert", method: :delete, data: { confirm: 'Are you sure?' } %>
+</div>
+
+<% end %>
+<br>

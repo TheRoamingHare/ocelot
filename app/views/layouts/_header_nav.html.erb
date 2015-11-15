@@ -5,7 +5,8 @@
     <li><label>Ocelot</label></li>
     <li> <%= link_to 'Activity Log', activity_logs_path %></li>
     <li> <%= link_to 'Thought Records', thought_records_path %></li>
-    <li><a href="#">...</a></li>
+    <li> <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+
   </ul>
 </aside>
 
@@ -34,6 +35,12 @@
     <ul class="left">
       <li> <%= link_to 'Activity Log', activity_logs_path %></li>
       <li> <%= link_to 'Thought Records', thought_records_path %></li>
+      <li> <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
     </ul>
+    <ul class="right">
+        <li> <%= link_to 'Ocelot', users_path %></li>
+    </ul>
+
   </section>
+
 </nav>
