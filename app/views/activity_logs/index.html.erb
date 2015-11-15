@@ -18,8 +18,8 @@
       <% for i in current_user.NormalWake..(current_user.NormalSleep + 12) %>
           <tr>
             <td><%= i%>:00 - <%= i+1%>:00</td>
-            <td><input type='text_area' /></td>
-            <td><input type='number_field' /></td>
+            <td><%= text_area_tag(:current_activity) %></td>
+            <td><%= number_field_tag(:current_mood) %></td>
           </tr>
         <% end %>
         <%@activity_logs.each do |log|%>
