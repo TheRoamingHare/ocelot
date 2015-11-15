@@ -52,10 +52,5 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="large-12 columns">
-    <%= link_to 'Edit', edit_thought_record_path(@thought_record) %>
-    <%= link_to 'Delete', @thought_record, method: :delete, data: { confirm: 'Are you sure?' } %>
-    <%= link_to 'Back', thought_records_path %>
-  </div>
-</div>
+<%= link_to 'Edit', edit_activity_log_thought_record_path(@thought_record.ActivityLog, @thought_record) %> |
+<%= link_to 'Back', activity_log_thought_records_path(@thought_record.ActivityLog) %>

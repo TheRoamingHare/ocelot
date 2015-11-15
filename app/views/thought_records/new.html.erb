@@ -4,7 +4,8 @@
   </div>
 </div>
 
-<%= render 'form' %>
+<%= render partial: 'form', locals: {url: activity_log_thought_records_path(@thought_record.ActivityLog)} %>
+
 <div class="row">
   <div class="large-12 columns">
     <%= link_to 'Back', thought_records_path %>

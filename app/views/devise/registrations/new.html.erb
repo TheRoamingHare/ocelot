@@ -36,6 +36,16 @@
     <%= f.text_field :Age %>
   </div>
 
+  <div class="field">
+    <%= f.label :Normal_time_you_wake_up %><br />
+    <%= f.number_field :NormalWake %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Normal_time_you_fall_asleep %><br />
+    <%= f.number_field :NormalSleep %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
