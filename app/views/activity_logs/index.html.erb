@@ -4,6 +4,36 @@
   <h1><%= current_user.Name %>'s Activity Logs</h1>
 <% end %>
 
+<% if false %>
+<%  %>
+ <table class='show-for-large-up'>
+   <caption>2 days ago</caption>
+   <thead>
+     <tr>
+       <th>Log Window</th>
+       <th>Activity</th>
+       <th>Mood Rating</th>
+       <th>Thought Record?</th>
+     </tr>
+   </thead>
+ </table>
+ <% end %>
+
+ <% if false %>
+ <%  %>
+  <table class='show-for-medium-up'>
+    <caption>Yesterday</caption>
+    <thead>
+      <tr>
+        <th>Log Window</th>
+        <th>Activity</th>
+        <th>Mood Rating</th>
+        <th>Thought Record?</th>
+      </tr>
+    </thead>
+  </table>
+  <% end %>
+
   <table class='show-for-small-up'>
     <caption><%= Date.today.to_s %></caption>
     <thead>
@@ -11,25 +41,39 @@
         <th>Log Window</th>
         <th>Activity</th>
         <th>Mood Rating</th>
+        <th>Thought Record?</th>
       </tr>
     </thead>
 
     <tbody>
-      <% for i in current_user.NormalWake..(current_user.NormalSleep + 12) %>
+      <% i = 0 %>
+      <% @activity_logs.each do |a_log| %>
+        <% i +=1 %>
+        <tr>
+          <td><%= a_log.LogWindow%><</td>
+          <td><%= a_log.CurrentActivity %></td>
+          <td><%= a_log.CurrentMood %></td>
+          <td>
+            <% #unless @thought_record.find(:activity_log_id => a_log.id).blank? %>
+
+            <% #else %>
+            <% #end %>
+          </td>
+        </tr>
+
+      <% end %>
+
+      <% for j in (current_user.NormalWake + i)..(current_user.NormalSleep + 11) %>
           <tr>
-            <td><%= i%>:00 - <%= i+1%>:00</td>
+            <td>
+              <% j = j - 12 if j > 12 %>
+              <% window = "#{j}:00 - #{j+1}:00" %>
+              <%= window %>
+            </td>
             <td><%= text_area_tag(:current_activity) %></td>
             <td><%= number_field_tag(:current_mood) %></td>
           </tr>
         <% end %>
-        <%@activity_logs.each do |log|%>
-        <tr>
-          <td>1</td>
-          <td><<%= log.CurrentActivity %></td>
-          <td><<%= log.CurrentMood %></td>
-          <td><%= link_to 'Show', activity_log_path(log) %></td>
-        </tr>
-        <%end%>
     </tbody>
   </table>
 <br>
