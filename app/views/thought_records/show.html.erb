@@ -11,23 +11,18 @@
 </p>
 
 <p>
-  <strong>Firstemotionstrength:</strong>
-  <%= @thought_record.FirstEmotionStrength %>
-</p>
-
-<p>
-  <strong>Autothoughts:</strong>
+  <strong>Automatic Thoughts:</strong>
   <%= @thought_record.AutoThoughts %>
 </p>
 
 <p>
-  <strong>Altresponse:</strong>
+  <strong>Alternative Response:</strong>
   <%= @thought_record.AltResponse %>
 </p>
 
 <p>
-  <strong>Secondemotionstrength:</strong>
-  <%= @thought_record.SecondEmotionStrength %>
+  <strong>Outcome:</strong>
+  <%= @thought_record.Outcome %>
 </p>
 
 <%= link_to 'Edit', edit_thought_record_path(@thought_record) %>
