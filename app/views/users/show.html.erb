@@ -20,5 +20,15 @@
   <%= @user.email %>
 </p>
 
+<p>
+  <strong>Usual time you wake up:</strong>
+  <%= @user.NormalWake %>
+</p>
+
+<p>
+  <strong>Usual time you sleep:</strong>
+  <%= @user.NormalSleep %>
+</p>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

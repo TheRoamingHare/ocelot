@@ -12,62 +12,70 @@
   <% end %>
 
   <div class="row">
-    <div class="large-6 columns">
+    <div class="large-12 columns">
       <strong>Current Situation</strong><br>
       <%= f.text_area :CurrentSituation,
-      :placeholder => "Where were you and what was going on when you got upset...?"%>
+      :placeholder => "Where were you and what was going on when you got upset?"%>
     </div>
   </div>
 
-  <div class="field">
-    <strong>Emotions</strong><br>
-    <%= f.text_area :Emotions,
-    :placeholder => "What emotions (sad, anxious, angry, etc) did you feel at the time? Rate the intensity of each (0-100%)"%>
-  </div>
-  <div class="field">
-    <strong>Automatic Thoughts</strong><br>
-    <%= f.text_area :AutoThoughts,
-    :placeholder => "What thoughts and/or images went through your mind? Rate your belief in each (0-100%)" %>
-  </div>
-
   <div class="row">
-    <div class ="large-6 columns">
+    <div class="large-12 columns">
+      <strong>Emotions</strong><br>
+      <%= f.text_area :Emotions,
+      :placeholder => "What emotions (sad, anxious, angry, etc) did you feel at the time? Rate the intensity of each (0-100%)"%>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <strong>Automatic Thoughts</strong>
+      <%= f.text_area :AutoThoughts,
+      :placeholder => "What thoughts and/or images went through your mind? Rate your belief in each (0-100%)" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <strong>Alternative Responses</strong>
+      <%= f.text_area :AltResponse,
+      :placeholder => "Use the questions below to compose responses to the automatic thoughts. Rate your belief in each (0-100%). Also, consult the list of possible distortions" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class ="large-12 columns">
       1. What is the evidence that automatic thought is true? What is the evidence that it is not true?
     </div>
   </div>
   <div class="row">
-    <div class ="large-6 columns">
-      2. Are there alternative explanations for tathat event or alternative ways to view the situation?
+    <div class ="large-12 columns">
+      2. Are there alternative explanations for that event or alternative ways to view the situation?
     </div>
   </div>
   <div class="row">
-    <div class="large-6 columns">
+    <div class="large-12 columns">
       3. What are the implications if the thought is true? What's the most upsetting thing about it? What's the most realistic view? What can I do about it?
     </div>
   </div>
   <div class="row">
-    <div class="large-6 columns">
+    <div class="large-12 columns">
       4. What would I tell a good friend in the same situation?
     </div>
   </div>
   <div class="row">
-    <div class="large-6 columns">
+    <div class="large-12 columns">
       <u>Possible Distortions:</u> All-or-nothing Thinking; Overgeneralizing; Discounting the Postives; Jumping to conclusions; Mind-reading;
       Fortune-telling; Magnifying/Minimizing; Emotional Reasoning; Making "Should" Statements; Labeling; Inappropriate Blaming.
     </div>
   </div>
-
-  <div class="field">
-    <strong>Alternative Responses</strong><br>
-    <%= f.text_area :AltResponse,
-    :placeholder => "Use the questions below to compose responses to the automatic thoughts. Rate your belief in each (0-100%). Also, consult the list of possible distortions" %>
+  <div class="row">
+    <div class="large-12 columns">
+      <br><strong>Outcome</strong>
+      <%= f.text_area :Outcome,
+      :placeholder => "Rerate your belief in your automatic thoughts (0-100%) and in the intensity of your emotions (0-100%)" %>
+    </div>
   </div>
-  <div class="field">
-    <strong>Outcome</strong><br>
-    <%= f.text_area :Outcome,
-    :placeholder => "Rerate your belief in your automatic thoughts (0-100%) and in the intensity of your emotions (0-100%)" %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="row">
+    <div class="large-12 columns">
+      <%= f.submit %>
+    </div>
   </div>
 <% end %>

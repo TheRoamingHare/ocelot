@@ -1,33 +1,28 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Current Situation:</strong>
+  <strong>Current Situation:</strong><br>
   <%= @thought_record.CurrentSituation %>
 </p>
 
 <p>
-  <strong>Emotions:</strong>
+  <strong>Emotions:</strong><br>
   <%= @thought_record.Emotions %>
 </p>
 
 <p>
-  <strong>Firstemotionstrength:</strong>
-  <%= @thought_record.FirstEmotionStrength %>
-</p>
-
-<p>
-  <strong>Autothoughts:</strong>
+  <strong>Automatic Thoughts:</strong><br>
   <%= @thought_record.AutoThoughts %>
 </p>
 
 <p>
-  <strong>Altresponse:</strong>
+  <strong>Alternative Response:</strong><br>
   <%= @thought_record.AltResponse %>
 </p>
 
 <p>
-  <strong>Secondemotionstrength:</strong>
-  <%= @thought_record.SecondEmotionStrength %>
+  <strong>Outcome:</strong><br>
+  <%= @thought_record.Outcome %>
 </p>
 
 <%= link_to 'Edit', edit_thought_record_path(@thought_record) %>
