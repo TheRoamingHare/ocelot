@@ -1,34 +1,37 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'New Thought record', new_thought_record_path %>
-
-
-<% if user_signed_in? %>
-  <h1><%= current_user.Name %>'s Thought Records</h1>
-<% end %>
-
-<table>
-  <thead>
-    <tr>
-      <th>Date - Time</th>
-      <th>Situation</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @thought_records.reverse.each do |thought_record| %>
-      <tr>
-        <td><<%= thought_record.updated_at %></td>
-        <td><%= thought_record.CurrentSituation %></td>
-        <td><%= link_to 'Show', activity_log_thought_record_path(thought_record.ActivityLog, thought_record) %></td>
-      </tr>
+<div class="row">
+  <div class="large-12 columns">
+    <% if user_signed_in? %>
+      <h1><%= current_user.Name %>'s Thought Records</h1>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <table class="thought-table">
+      <thead>
+        <tr>
+          <th class="date-time">Date - Time</th>
+          <th class="situation">Situation</th>
+          <th class="show-bar"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @thought_records.reverse.each do |thought_record| %>
+          <tr>
+            <td><<%= thought_record.updated_at %></td>
+            <td><%= thought_record.CurrentSituation %></td>
+            <td><%= link_to 'Show', activity_log_thought_record_path(thought_record.ActivityLog, thought_record) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <br>
-
 <% if params[:activity_log_id] && @thought_records.length > 0 %>
   <%= link_to 'New Thought record', new_activity_log_thought_record_path(@thought_records[0].ActivityLog) %>
 <% end %>

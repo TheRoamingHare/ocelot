@@ -1,29 +1,56 @@
 <p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="large-12 columns">
+    <h1>Thought Record for <%= @thought_record.updated_at %></h1>
+  </div>
+</div>
 
-<p>
-  <strong>Current Situation:</strong><br>
-  <%= @thought_record.CurrentSituation %>
-</p>
-
-<p>
-  <strong>Emotions:</strong><br>
-  <%= @thought_record.Emotions %>
-</p>
-
-<p>
-  <strong>Automatic Thoughts:</strong><br>
-  <%= @thought_record.AutoThoughts %>
-</p>
-
-<p>
-  <strong>Alternative Response:</strong><br>
-  <%= @thought_record.AltResponse %>
-</p>
-
-<p>
-  <strong>Outcome:</strong><br>
-  <%= @thought_record.Outcome %>
-</p>
+<div class="row">
+  <div class="large-12 columns">
+    <table class="show-table">
+      <tr>
+        <td class="show-left-col">
+          <strong>Current Situation</strong><br>
+        </td>
+        <td>
+          <%= @thought_record.CurrentSituation %>
+        </td>
+      </tr>
+      <tr>
+        <td class="show-left-col">
+          <strong>Emotions</strong><br>
+        </td>
+        <td>
+          <%= @thought_record.Emotions %>
+        </td>
+      </tr>
+      <tr>
+        <td class="show-left-col">
+          <strong>Automatic Thoughts</strong><br>
+        </td>
+        <td>
+          <%= @thought_record.AutoThoughts %>
+        </td>
+      </tr>
+      <tr>
+        <td class="show-left-col">
+          <strong>Alternative Response</strong><br>
+        </td>
+        <td>
+          <%= @thought_record.AltResponse %>
+        </td>
+      </tr>
+      <tr>
+        <td class="show-left-col">
+          <strong>Outcome</strong><br>
+        </td>
+        <td>
+          <%= @thought_record.Outcome %>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
 
 <%= link_to 'Edit', edit_activity_log_thought_record_path(@thought_record.ActivityLog, @thought_record) %> |
 <%= link_to 'Back', activity_log_thought_records_path(@thought_record.ActivityLog) %>
